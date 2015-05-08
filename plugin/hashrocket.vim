@@ -66,9 +66,9 @@ endif
 call extend(g:rails_projections, {
       \  "app/presenters/*.rb": {
       \     "command": "presenter",
-      \     "test": "spec/presenter/%s_spec.rb",
-      \     "alternate": "spec/presenter/%s_spec.rb",
-      \     "template": "class %S\nend" }
+      \     "test": "spec/presenter/{}_spec.rb",
+      \     "alternate": "spec/presenter/{}_spec.rb",
+      \     "template": "class {camelcase|capitalize|colons}\nend" }
       \ }, 'keep')
 
 if !exists('g:rails_gem_projections')
@@ -79,7 +79,7 @@ call extend(g:rails_gem_projections, {
       \ "active_model_serializers": {
       \   "app/serializers/*_serializer.rb": {
       \     "command": "serializer",
-      \     "template": "class %SSerializer < ActiveModel::Serializer\nend",
+      \     "template": "class {camelcase|capitalize|colons}Serializer < ActiveModel::Serializer\nend",
       \     "affinity": "model"}},
       \ "rspec": {
       \    "spec/support/*.rb": {
@@ -87,7 +87,7 @@ call extend(g:rails_gem_projections, {
       \ "cucumber": {
       \   "features/*.feature": {
       \     "command": "feature",
-      \     "template": "Feature: %h"},
+      \     "template": "Feature: {capitalize|blank}"},
       \   "features/support/*.rb": {
       \     "command": "support"},
       \   "features/support/env.rb": {
@@ -97,27 +97,27 @@ call extend(g:rails_gem_projections, {
       \ "carrierwave": {
       \   "app/uploaders/*_uploader.rb": {
       \     "command": "uploader",
-      \     "template": "class %SUploader < CarrierWave::Uploader::Base\nend"}},
+      \     "template": "class {camelcase|capitalize|colons}Uploader < CarrierWave::Uploader::Base\nend"}},
       \ "draper": {
       \   "app/decorators/*_decorator.rb": {
       \     "command": "decorator",
       \     "affinity": "model",
-      \     "template": "class %SDecorator < ApplicationDecorator\nend"}},
+      \     "template": "class {camelcase|capitalize|colons}Decorator < ApplicationDecorator\nend"}},
       \ "fabrication": {
       \   "spec/fabricators/*_fabricator.rb": {
       \     "command": ["fabricator", "factory"],
-      \     "alternate": "app/models/%s.rb",
-      \     "related": "db/schema.rb#%p",
-      \     "test": "spec/models/%s_spec.rb",
-      \     "template": "Fabricator :%s do\nend",
+      \     "alternate": "app/models/{}.rb",
+      \     "related": "db/schema.rb#{pluralize}",
+      \     "test": "spec/models/{}_spec.rb",
+      \     "template": "Fabricator :{} do\nend",
       \     "affinity": "model"}},
       \ "factory_girl": {
       \   "spec/factories/*_factory.rb": {
       \     "command": "factory",
-      \     "alternate": "app/models/%s.rb",
-      \     "related": "db/schema.rb#%p",
-      \     "test": "spec/models/%s_spec.rb",
-      \     "template": "FactoryGirl.define do\n  factory :%s do\n  end\nend",
+      \     "alternate": "app/models/{}.rb",
+      \     "related": "db/schema.rb#{pluralize}",
+      \     "test": "spec/models/{}_spec.rb",
+      \     "template": "FactoryGirl.define do\n  factory :{} do\n  end\nend",
       \     "affinity": "model"},
       \   "spec/factories.rb": {
       \      "command": "factory"},
@@ -126,11 +126,11 @@ call extend(g:rails_gem_projections, {
       \ }, 'keep')
 
 " Generic non-Rails projections with projectile.vim
-if !exists('g:projectiles')
-  let g:projectiles = {}
+if !exists('g:projectionist_heuristics')
+  let g:projectionist_heuristics = {}
 endif
 
-call extend(g:projectiles, {
+call extend(g:projectionist_heuristics, {
       \ "config.rb&source/": {
       \   "source/stylesheets/*.sass": { "command" : "stylesheet" },
       \   "source/stylesheets/*.scss": { "command" : "stylesheet" },
