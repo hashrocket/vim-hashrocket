@@ -112,7 +112,7 @@ call extend(g:rails_gem_projections, {
       \     "template": "Fabricator :{} do\nend",
       \     "affinity": "model"}},
       \ "factory_girl": {
-      \   "spec/factories/*_factory.rb": {
+      \   "spec/factories/*.rb": {
       \     "command": "factory",
       \     "alternate": "app/models/{}.rb",
       \     "related": "db/schema.rb#{pluralize}",
