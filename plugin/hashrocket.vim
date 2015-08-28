@@ -175,6 +175,10 @@ if exists("g:use_cursor_shapes") && g:use_cursor_shapes
   let &t_EI .= "\<Esc>[2 q"
 endif
 
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 function! s:unused_steps(bang) abort
   let savegp = &grepprg
 
