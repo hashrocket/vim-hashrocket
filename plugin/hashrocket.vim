@@ -144,7 +144,14 @@ call extend(g:projectionist_heuristics, {
       \ }, 'keep')
 
 inoremap <C-C> <Esc>`^
+
+" copy to end of line
 map Y y$
+" copy to system clipboard
+map gy "*y
+" copy whole file to system clipboard
+nmap gY gg"*yG
+
 
 " Enable TAB indent and SHIFT-TAB unindent
 vnoremap <silent> <TAB> >gv
