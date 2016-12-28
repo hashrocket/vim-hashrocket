@@ -148,9 +148,9 @@ inoremap <C-C> <Esc>`^
 " copy to end of line
 nnoremap Y y$
 " copy to system clipboard
-nnoremap gy "*y
+nnoremap gy "+y
 " copy whole file to system clipboard
-nnoremap gY gg"*yG
+nnoremap gY gg"+yG
 
 
 " Enable TAB indent and SHIFT-TAB unindent
