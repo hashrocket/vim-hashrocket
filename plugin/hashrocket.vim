@@ -146,11 +146,11 @@ call extend(g:projectionist_heuristics, {
 inoremap <C-C> <Esc>`^
 
 " copy to end of line
-map Y y$
+nnoremap Y y$
 " copy to system clipboard
-map gy "*y
+nnoremap gy "*y
 " copy whole file to system clipboard
-nmap gY gg"*yG
+nnoremap gY gg"*yG
 
 
 " Enable TAB indent and SHIFT-TAB unindent
