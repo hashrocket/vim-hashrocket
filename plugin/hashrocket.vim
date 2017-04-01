@@ -6,33 +6,6 @@ if exists('g:loaded_hashrocket')
 endif
 let g:loaded_hashrocket = 1
 
-if $HASHROCKET_DIR == '' && expand('<sfile>') =~# '/dotmatrix/\.vim/plugin/hashrocket\.vim$'
-  let $HASHROCKET_DIR = expand('<sfile>')[0 : -38]
-endif
-if $HASHROCKET_DIR == '' && filereadable(expand('~/.bashrc'))
-  let $HASHROCKET_DIR = expand(matchstr("\n".join(readfile(expand('~/.bashrc')),"\n")."\n",'\n\%(export\)\=\s*HASHROCKET_DIR="\=\zs.\{-\}\ze"\=\n'))
-endif
-if $HASHROCKET_DIR == ''
-  let $HASHROCKET_DIR = substitute(system("bash -i -c 'echo \"$HASHROCKET_DIR\"'"),'\n$','','')
-endif
-if $HASHROCKET_DIR == ''
-  let $HASHROCKET_DIR = expand('~/hashrocket')
-endif
-
-function! s:HComplete(A,L,P)
-  let match = split(glob($HASHROCKET_DIR.'/'.a:A.'*'),"\n")
-  return map(match,'v:val[strlen($HASHROCKET_DIR)+1 : -1]')
-endfunction
-command! -bar -nargs=1 Hcommand :command! -bar -bang -nargs=1 -complete=customlist,s:HComplete H<args> :<args><lt>bang> $HASHROCKET_DIR/<lt>args>
-
-Hcommand cd
-Hcommand lcd
-Hcommand read
-Hcommand edit
-Hcommand split
-Hcommand saveas
-Hcommand tabedit
-
 command! -bar -range=% NotRocket :<line1>,<line2>s/:\(\w\+\)\s*=>/\1:/ge
 
 function! HTry(function, ...)
