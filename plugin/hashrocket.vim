@@ -220,7 +220,7 @@ augroup hashrocket
 
   autocmd Syntax   css  syn sync minlines=50
 
-  autocmd FileType help nnoremap q :q<cr>
+  autocmd FileType help nnoremap <buffer> q :q<cr>
   autocmd FileType ruby nmap <buffer> <leader>bt <Plug>BlockToggle
   autocmd BufRead *_spec.rb map <buffer> <leader>l <Plug>ExtractRspecLet
   autocmd FileType sql nmap <buffer> <leader>t :<C-U>w \| call Send_to_Tmux("\\i ".expand("%")."\n")<CR>
