@@ -162,8 +162,6 @@ iabbrev rdebug    require 'ruby-debug'; Debugger.start; Debugger.settings[:autoe
 iabbrev bpry      require 'pry'; binding.pry;
 iabbrev ipry      require IEx; IEx.pry;
 
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-
 xnoremap <leader>g y :Ggrep "<CR>
 
 function! s:align()
@@ -222,6 +220,8 @@ augroup hashrocket
 
   autocmd FileType help nnoremap <buffer> q :q<cr>
   autocmd FileType ruby nmap <buffer> <leader>bt <Plug>BlockToggle
+  autocmd FileType cucumber
+        \ inoremap <buffer><silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
   autocmd BufRead *_spec.rb map <buffer> <leader>l <Plug>ExtractRspecLet
   autocmd FileType sql nmap <buffer> <leader>t :<C-U>w \| call Send_to_Tmux("\\i ".expand("%")."\n")<CR>
 augroup END
