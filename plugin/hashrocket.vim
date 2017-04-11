@@ -81,7 +81,7 @@ call extend(g:rails_gem_projections, {
       \     "command": "serializer",
       \     "template": "class {camelcase|capitalize|colons}Serializer < ActiveModel::Serializer\nend",
       \     "affinity": "model"}},
-      \ "rspec": {
+      \ "rspec-core": {
       \    "spec/support/*.rb": {
       \      "command": "support"}},
       \ "cucumber": {
