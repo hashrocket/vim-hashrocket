@@ -162,7 +162,7 @@ iabbrev rdebug    require 'ruby-debug'; Debugger.start; Debugger.settings[:autoe
 iabbrev bpry      require 'pry'; binding.pry;
 iabbrev ipry      require IEx; IEx.pry;
 
-xnoremap <leader>g y :Ggrep "<CR>
+xnoremap <leader>g y :Ggrep <C-R>"<CR>
 
 function! s:align()
   let p = '^\s*|\s.*\s|\s*$'
