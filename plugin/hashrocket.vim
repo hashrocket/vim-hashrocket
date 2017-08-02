@@ -225,3 +225,17 @@ augroup hashrocket
   autocmd BufRead *_spec.rb map <buffer> <leader>l <Plug>ExtractRspecLet
   autocmd FileType sql nmap <buffer> <leader>t :<C-U>w \| call Send_to_Tmux("\\i ".expand("%")."\n")<CR>
 augroup END
+
+if executable('prettier')
+  let g:neoformat_try_formatprg = 1
+
+  augroup PrettierJSAutoFormat
+    autocmd!
+    autocmd FileType javascript,javascript.jsx setlocal formatprg=prettier\
+                                                          \--stdin\
+                                                          \--print-width\ 80\
+                                                          \--single-quote\
+                                                          \--trailing-comma\ es5
+    autocmd BufWritePre *.js,*.jsx Neoformat
+  augroup END
+endif
