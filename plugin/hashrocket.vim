@@ -226,7 +226,7 @@ augroup hashrocket
   autocmd FileType sql nmap <buffer> <leader>t :<C-U>w \| call Send_to_Tmux("\\i ".expand("%")."\n")<CR>
 augroup END
 
-if executable('prettier')
+if executable('prettier') && exists(':Neoformat')
   let g:neoformat_try_formatprg = 1
 
   augroup PrettierJSAutoFormat
