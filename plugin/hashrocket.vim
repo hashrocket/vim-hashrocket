@@ -231,11 +231,7 @@ if executable('prettier') && exists(':Neoformat')
 
   augroup PrettierJSAutoFormat
     autocmd!
-    autocmd FileType javascript,javascript.jsx setlocal formatprg=prettier\
-                                                          \--stdin\
-                                                          \--print-width\ 80\
-                                                          \--single-quote\
-                                                          \--trailing-comma\ es5
+    autocmd FileType javascript,javascript.jsx setlocal formatprg=prettier\ --stdin\ --stdin-filepath=%
     autocmd BufWritePre *.js,*.jsx Neoformat
   augroup END
 endif
